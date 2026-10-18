@@ -36,12 +36,26 @@ files. Updates require installing a newly reviewed package manually.
 
 ## Install
 
-1. Download [highlight-marks.iinaplgz](dist/highlight-marks.iinaplgz) using GitHub's
-   **Download raw file** button, or build the package from source.
-2. Double-click the package and complete installation in IINA.
-3. Confirm that the permission list contains **Show OSD only**.
-4. Enable **Highlight Marks** in **IINA → Settings (or Preferences) → Plugins**,
-   then reopen the video. Restart IINA if the plugin menu is not visible.
+### Install from GitHub
+
+1. Open **IINA → Settings (or Preferences) → Plugins**.
+2. Choose **Install from GitHub** (under **+**, if shown).
+3. Enter `leohaipengli/iina-highlight-marks` and install.
+4. Confirm that the permission list contains **Show OSD only**.
+5. Enable **Highlight Marks**, then reopen the video. Restart IINA if the plugin
+   menu is not visible.
+
+IINA downloads the `.iinaplgz` attachment from the latest published release using
+[its own GitHub installer](https://github.com/iina/iina/blob/v1.4.4/iina/JavascriptPlugin.swift#L227-L255).
+This does not grant the plugin network access or enable automatic plugin updates.
+
+### Install a package manually
+
+Download `highlight-marks.iinaplgz` from a specific
+[release](https://github.com/leohaipengli/iina-highlight-marks/releases), then
+double-click it to install in IINA. The
+[repository copy](dist/highlight-marks.iinaplgz) can also be downloaded using
+GitHub's **Download raw file** button, or built from source.
 
 If another plugin uses Control+B, disable that shortcut or plugin to avoid a conflict.
 
@@ -134,6 +148,16 @@ python3 build.py
 The build produces a reproducible ZIP with IINA's `.iinaplgz` extension.
 `dist/CONTENTS.sha256` lists the packaged source hashes; `dist/SHA256SUMS` records
 the package hash. Rebuild after changing files in `plugin/`.
+
+### Publish a release for IINA's GitHub installer
+
+Build and verify the package, tag the corresponding commit with the version in
+`plugin/Info.json`, and create a published GitHub release for that tag. Attach
+`dist/highlight-marks.iinaplgz`, `dist/CONTENTS.sha256`, and `dist/SHA256SUMS`.
+The release must be available through GitHub's **latest release** endpoint; drafts
+and pre-releases are excluded. Keeping the package only in `dist/` is insufficient
+for IINA to discover it as a release asset. Leave `ghRepo` and `ghVersion` out of
+the plugin manifest to keep updates manual.
 
 The implementation is original. It does not include code or dependencies from
 IINA Plugin Bookmarks. Contributions should keep the source readable, avoid adding
