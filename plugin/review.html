@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Highlight Marks</title>
+  <link rel="stylesheet" href="review.css">
+  <script src="review.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">HIGHLIGHT MARKS</div>
+      <h1>Your moments, saved.</h1>
+      <p>Mark a point. Let the AI find the clip around it.</p>
+    </header>
+    <section class="source" aria-label="Current video">
+      <div><span class="status-dot" aria-hidden="true"></span><strong id="source-title">Open a local video in IINA</strong></div>
+      <p id="source-path">Marks are saved automatically in this plugin’s own folder.</p>
+    </section>
+    <div class="toolbar">
+      <button id="mark" class="primary">Mark moment <kbd>⌃B</kbd></button>
+      <button id="undo">Undo</button>
+      <button id="refresh">Refresh</button>
+      <button id="export" class="export">Export JSON ↗</button>
+    </div>
+    <p id="notice" class="notice" role="status" aria-live="polite"></p>
+    <section aria-labelledby="marks-heading">
+      <div class="section-title"><h2 id="marks-heading">Marked moments</h2><span id="count">0 saved</span></div>
+      <p id="empty" class="empty">While watching, press Control+B to save a moment.<br>You can rewind first; each mark records the exact point you choose.</p>
+      <ol id="marks" class="marks"></ol>
+    </section>
+    <details id="json-details">
+      <summary>View JSON for this video</summary>
+      <p class="hint">You can also select this text and copy it into your AI chat.</p>
+      <textarea id="json" readonly aria-label="Exported marks JSON" spellcheck="false"></textarea>
+      <button id="select-json">Select all JSON</button>
+    </details>
+    <footer>Saved as point timestamps. No clip boundaries are added.</footer>
+  </main>
+</body>
+</html>

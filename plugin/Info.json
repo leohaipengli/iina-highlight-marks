@@ -1,0 +1,10 @@
+{
+  "name": "Highlight Marks",
+  "identifier": "org.highlightmarks.iina",
+  "version": "1.0.2",
+  "description": "Minimal-permission timestamp bookmarks for IINA. Mark moments, add notes, and export JSON.",
+  "author": { "name": "Highlight Marks contributors" },
+  "entry": "main.js",
+  "permissions": ["show-osd"],
+  "allowedDomains": []
+}
